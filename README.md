@@ -1,13 +1,13 @@
-#An intro to Git
+# An intro to Git
 
-##Not covered
+## Not covered
 * git config - http://git-scm.com/docs/git-config
 * ssh config - https://help.github.com/articles/generating-ssh-keys/
 
-##Intro
+## Intro
 What is git? Distributed SCM.
 
-##Creating a repo and our first commit
+## Creating a repo and our first commit
 
 ```
 mkdir animals
@@ -26,7 +26,7 @@ git status (see no staged files and no untracked files)
 git log (see our commit, our sha-1)
 ```
 
-##Staged and unstaged changes
+## Staged and unstaged changes
 
 ```
 vi animals.txt (add a frog)
@@ -58,7 +58,7 @@ git commit -m 'added a frog'
 git status
 ```
 
-##Working with others
+## Working with others
 
 (Explain distributed vs server/client. Everyone has the repo.)  
 (Create a repo on github - follow instructions. Explain ssh vs https.)
