@@ -1,14 +1,8 @@
 # An intro to Git
 
-# Prop
+# Prep
 - git config unset --global pull.rebase
-
-## Not covered
-* git config - http://git-scm.com/docs/git-config
-* ssh config - https://help.github.com/articles/generating-ssh-keys/
-
-## Intro
-What is git? Distributed SCM.
+git config --global alias.dad '!curl https://icanhazdadjoke.com/ && echo'
 
 ## Creating a repo and our first commit
 
@@ -183,7 +177,180 @@ git log --graph --pretty=oneline --abbrev-commit
 ```
 (explain why rebase is preferable)
 
-Demo pull requests in GitHub
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+# Branching
+
+```
+git branch -M uno
+git switch -c demo
+git status
+git switch demo
+
+git status (note no tracking)
+edit file
+git commit -am ""
+git push (since it knows about origin sets it up)
+
+talk about pull requests
+```
+
+https://mermaid.live/
+- gitGraph
+
+Trunk based
+```
+gitGraph
+    commit
+    branch feature1
+    commit
+    commit
+    switch main
+    merge feature1
+    branch feature2
+    commit
+    switch main
+    branch hotfix1
+    commit
+    switch feature2
+    commit
+    switch main
+    merge feature2
+    branch feature3
+    commit
+    switch hotfix1
+    commit
+    switch main
+    merge hotfix1
+```
+
+Git flow
+```
+gitGraph
+commit
+branch dev
+commit
+branch feature1
+commit
+commit
+switch dev
+branch feature2
+commit
+commit
+switch dev
+merge feature1
+branch release1
+commit
+switch main
+merge release1
+switch dev
+merge release1
+```
+
+TAGS
+annotaed have details in the DB, like date/author/signing
+lightweight just a tag
+
+```
+git tag
+git tag v2.0
+git tag
+git log
+git tag -a v3.0
+git tag -a v3.0.1 -m "my version 2"
+commit
+git tag -l "v3.0*"
+git tag v1.0 3ed70a56216667bf7832503b
+e7eb38a5849a90d2
+git push (show nothing went up)
+git push --tags
+```
+
+```
+git checkout <hash / tag>
+```
+
+```
+git stash
+git stash -l
+git stash pop
+git stash
+git stash apply
+```
+
+```
+.gitgnore
+gitignore website
+```
+
+```
+edit file
+commit
+edit file
+commit --amend
+```
+
+```
+branch feat
+add 2 commits
+switch back to main
+git log
+git log feat --oneline
+git cherry-pick hashco
+```
+
+SLIDES
+
+```
+edit file A
+edit file B
+git diff (see both)
+git add A
+git status
+git diff (no longer shows staged)
+git diff --staged
+```
+
+```
+git config -l
+git config --global -l
+git config alias.st status
+git config alias.diffs diff --staged
+git config alias.hello "!echo hi"
+git dad
+```
+
+SLIDES
+
+prepare-commit-msg
+```
+#!/bin/sh
+echo "# Please include a useful commit message!" > $1
+```
+chmod +x prepare-commit-msg
+
+```
+npm init
+npx husky init
+.husky
+talk about pre-commit
+```
+pre-commit
+
+
+```
+git gc
+git maintenance run
+git maintenance start
+```
+
+```
+git bisect start
+```
+
+VS Code
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 # Resources
 * https://git-scm.com/book
