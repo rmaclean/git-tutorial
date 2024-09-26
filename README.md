@@ -1,5 +1,8 @@
 # An intro to Git
 
+# Prop
+- git config unset --global pull.rebase
+
 ## Not covered
 * git config - http://git-scm.com/docs/git-config
 * ssh config - https://help.github.com/articles/generating-ssh-keys/
@@ -10,16 +13,20 @@ What is git? Distributed SCM.
 ## Creating a repo and our first commit
 
 ```
-mkdir animals
-cd animals
-touch animals.txt
+mkdir food
+cd food
+code recipes.txt
 git status (see not a repository)
 git init
 git status (see untracked file)
-vi animals.txt
+ls -a
+cd .git
+cat config
+cat HEAD
+code recipes.txt
 (add some animals)
 git status (see untracked file)
-git add animals.txt
+git add recipes.txt
 git status (see staged file)
 git commit -m 'adds some animals'
 git status (see no staged files and no untracked files)
@@ -32,20 +39,20 @@ git log (see our commit, our sha-1)
 vi animals.txt (add a frog)
 git status (see unstaged changes. Explain untracked vs unstaged)
 git diff
-git add animals.txt
+git add . (talk to the difference in this one)
 git status (see staged changes)
-git reset
+git restore --staged recipes.txt
 git status (see unstaged changes)
-touch file
+code cocktails.txt
 git status
-git add file
-git status (see one staged and one unstaged)
+git add cocktails.txt
+git status (see one new and one modified)
 git commit -m 'added a file'
 git status (see one unstaged. one committed)
 git log (see our commit)
 git show (see only our commit)
 git status (see one unstaged)
-vi animals.txt (add a lion on top)
+code recipes.txt (add a lion on top)
 git status
 git diff
 git add -p animals.txt (split - yes to lion no to frong)
@@ -60,7 +67,7 @@ git status
 
 ## Working with others
 
-(Explain distributed vs server/client. Everyone has the repo.)  
+(Explain distributed vs server/client. Everyone has the repo.)
 (Create a repo on github - follow instructions. Explain ssh vs https.)
 ```
 git remote add origin <repo-url> (explain remotes)
@@ -72,6 +79,8 @@ git push -u origin master (explain tracking and branches)
 
 ```
 git status (see tracking info)
+git remote
+git remote get-url origin
 vi animals.txt (add monkey)
 git status
 git add .
@@ -99,6 +108,8 @@ git push
 git status
 cd ../dev2
 git status
+git fetch
+git status
 git log
 git pull
 git log
@@ -121,6 +132,7 @@ git status
 git commit -m 'change frog to unicorn'
 git status
 git push (explain reject - how distributed works)
+git fetch
 ```
 
 (the merge - 2 ways)
@@ -169,7 +181,9 @@ git status
 git log (see our commit after the dev2 commit)
 git log --graph --pretty=oneline --abbrev-commit
 ```
-(explain why rebase is prefereable)
+(explain why rebase is preferable)
+
+Demo pull requests in GitHub
 
 # Resources
 * https://git-scm.com/book
